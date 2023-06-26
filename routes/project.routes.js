@@ -60,7 +60,7 @@ router.post('/', upload.single('profileimage'), async (req, res) => {
     let projecets = new Projects(req.body) //gør en ny projekt klar med data fra requests body
     review.profileimage = req.file.filename //Tilføj images filename til det nye projekt
 
-    await projects.save() //Gem projektet i db
+    await projecets.save() //Gem projektet i db
 
     return res.status(201).json({ message: "Ny Review er oprettet", created: projecets })
 
