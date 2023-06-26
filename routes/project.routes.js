@@ -52,15 +52,15 @@ router.get('/:id', async (req, res) => {
 })
 
 //-------POST --------
-router.post('/', upload.single('profileimage'), async (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
 
   console.log('Projects POST', req.body)
 
   try {
     let projects = new Projects(req.body) //gør en ny projekt klar med data fra requests body
-    projects.profileimage = req.file.filename //Tilføj images filename til det nye projekt
+    projects.image = req.file.filename //Tilføj images filename til det nye projekt
 
-    await projecets.save() //Gem projektet i db
+    await projects.save() //Gem projektet i db
 
     return res.status(201).json({ message: "Ny projekt er oprettet", created: projects })
 
