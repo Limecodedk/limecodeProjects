@@ -57,12 +57,12 @@ router.post('/', upload.single('profileimage'), async (req, res) => {
   console.log('Projects POST', req.body)
 
   try {
-    let projecets = new Projects(req.body) //gør en ny projekt klar med data fra requests body
-    review.profileimage = req.file.filename //Tilføj images filename til det nye projekt
+    let projects = new Projects(req.body) //gør en ny projekt klar med data fra requests body
+    projects.profileimage = req.file.filename //Tilføj images filename til det nye projekt
 
     await projecets.save() //Gem projektet i db
 
-    return res.status(201).json({ message: "Ny Review er oprettet", created: projecets })
+    return res.status(201).json({ message: "Ny projekt er oprettet", created: projects })
 
   } catch (error) {
 
@@ -84,11 +84,11 @@ router.put('/:id', upload.single('profileimage'), async (req, res) => {
     }
 
     let projecets = await Projects.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true })
-    if (review === null) {
+    if (projecets === null) {
       return res.status(404).json({ message: "Projecets kunne ikke findes og rettets" })
     }
 
-    return res.status(200).json({ message: "Projecets er opdateret", updated: review })
+    return res.status(200).json({ message: "Projecets er opdateret", updated: projecets })
 
   } catch (error) {
 
