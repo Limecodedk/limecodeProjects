@@ -17,7 +17,7 @@ const projectsSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    required: [true, 'Foto er påkrævet']
+    required: [false, 'Foto er påkrævet']
   }
 })
 
