@@ -18,6 +18,10 @@ const projectsSchema = new mongoose.Schema({
   image: {
     type: String,
     required: [false, 'Foto er påkrævet']
+  },
+  imageWebP: {
+    type: String,
+    required: [false, 'Foto er påkrævet']
   }
 })
 
